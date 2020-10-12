@@ -1,2 +1,10 @@
 # C_SHELL
-C shell implementation
+
+A simple shell implementation.
+
+- [ ] Simple Commands
+- [ ] Complex Commands
+- [ ] Built-in Commands
+- [ ] Redirection
+- [ ] Pipes
+- [ ] Shortcuts
