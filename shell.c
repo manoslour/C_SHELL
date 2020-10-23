@@ -15,17 +15,20 @@ int main(int argc, char *argv[]){
         printPrompt();
         input = readLine();
 
-        if(strstr(input, "<")){
-            command = tokenizeLine(input, "|");
-            execRedirection(command, INPUT);
-        }
-        else if(strstr(input, ">>")){
+        if(strstr(input, "|||")){
+            //printf("Enterd append\n");
             command = tokenizeLine(input, "|||");
             execRedirection(command, APPEND);
         }
-        else if(strstr(input, ">")){
+        else if(strstr(input, "||")){
+            //printf("Entered write\n");
             command = tokenizeLine(input, "||");
             execRedirection(command, OUTPUT);
+        }
+        else if(strstr(input, "|")){
+            //printf("Entered read\n");
+            command = tokenizeLine(input, "|");
+            execRedirection(command, INPUT);
         }
         else
         {
