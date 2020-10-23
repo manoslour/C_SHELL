@@ -2,9 +2,9 @@
 
 A simple shell implementation.
 
-- [ ] Simple Commands
-- [ ] Complex Commands
-- [ ] Built-in Commands
-- [ ] Redirection
+- [x] Simple Commands
+- [x] Complex Commands
+- [x] Built-in Commands
+- [x] Redirection
 - [ ] Pipes
 - [ ] Shortcuts
