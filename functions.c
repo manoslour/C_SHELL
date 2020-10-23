@@ -107,7 +107,7 @@ void execRedirection(char** buffer, int mode){
     char** command;
     pid_t child_pid;
     removeSpaces(buffer[1]);
-
+    
     command = tokenizeLine(buffer[0], " ");
     child_pid = fork();
 
