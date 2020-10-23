@@ -10,4 +10,4 @@ functions.o: functions.c functions.h
 	gcc -c functions.c
 
 clean:
-	rm *.o
+	rm *.o cs345sh
