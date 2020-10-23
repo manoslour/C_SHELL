@@ -16,17 +16,14 @@ int main(int argc, char *argv[]){
         input = readLine();
 
         if(strstr(input, "|||")){
-            //printf("Enterd append\n");
             command = tokenizeLine(input, "|||");
             execRedirection(command, APPEND);
         }
         else if(strstr(input, "||")){
-            //printf("Entered write\n");
             command = tokenizeLine(input, "||");
             execRedirection(command, OUTPUT);
         }
         else if(strstr(input, "|")){
-            //printf("Entered read\n");
             command = tokenizeLine(input, "|");
             execRedirection(command, INPUT);
         }
