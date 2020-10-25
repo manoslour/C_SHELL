@@ -13,10 +13,9 @@ A simple shell implementation.
 ### Shell.c
 
 Shell reads input by line, and calls the appropriate function,  
-based on the delimeter commands are separated with.  
-If no delimeter is used, a function for basic shell commands is called.
+based on the delimeter commands are separated with. If no delimeter is used, a function for basic shell commands is called.
 
-* INPUT, OUTPUT, APPEND are defined in functions.h as 0,1,2 accordingly.
+* INPUT(0), OUTPUT(1), APPEND(2) are defined in functions.h
 
 #### Run Shell:
 
