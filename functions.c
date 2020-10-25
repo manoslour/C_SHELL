@@ -107,7 +107,7 @@ void execRedirection(char** buffer, int mode){
     char** command;
     pid_t child_pid;
     removeSpaces(buffer[1]);
-    
+
     command = tokenizeLine(buffer[0], " ");
     child_pid = fork();
 
@@ -154,6 +154,53 @@ void execRedirection(char** buffer, int mode){
         exit(1);
     }
     else{
+        wait(NULL);
+    }
+}
+
+void execPipedCommand(char* buffer){
+    int procsNum = 0;
+    char** commands;
+    char** proc_command;
+    commands = tokenizeLine(buffer, ">");
+
+    while(commands[procsNum] != NULL){
+        printf("Commands[%d] = %s\n", procsNum, commands[procsNum]);
+        procsNum++;
+    }
+    int i;
+    pid_t pid;
+
+    int fd[procsNum][2]; // 2 file descriptors for each process
+    for(i = 0; i < procsNum; i++){
+        proc_command = tokenizeLine(commands[i], " ");
+        //Dont create pipe when in last process
+        if(i != procsNum - 1){
+            if(pipe(fd[i]) == -1){
+                perror("Error in pipe creation\n");
+                return;
+            }
+        }
+        pid = fork();
+        if(pid == 0){
+            if(i != procsNum - 1){
+                dup2(fd[i][1], 1);
+                close(fd[i][0]);
+                close(fd[i][1]);
+            }
+            if( i != 0){
+                dup2(fd[i-1][0], 0);
+                close(fd[i-1][0]);
+                close(fd[i-1][1]);
+            }
+            execvp(proc_command[0], proc_command);
+            perror("Invalid input");
+            exit(1);
+        }
+        else{
+            close(fd[i-1][0]);
+            close(fd[i-1][1]);
+        }
         wait(NULL);
     }
 }

@@ -38,6 +38,9 @@ int cd(char *path);
 /* Loads and executes a simple shell command */
 void execSimple(char** buffer);
 
+/* Handles piped commands */
+void execPipedCommand(char* buffer);
+
 /* Loads and executes a shell command that needs redirection */
 void execRedirection(char** buffer, int mode);
 
