@@ -186,7 +186,7 @@ void execPipedCommand(char* buffer){
     commands = tokenizeLine(buffer, ">");
 
     while(commands[procsNum] != NULL){
-        printf("Commands[%d] = %s\n", procsNum, commands[procsNum]);
+        //printf("Commands[%d] = %s\n", procsNum, commands[procsNum]);
         procsNum++;
     }
     int i;
