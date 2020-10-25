@@ -158,6 +158,7 @@ void execRedirection(char** buffer, int mode){
     }
 }
 
+/* Loads and ececutes pipeline commands */
 void execPipedCommand(char* buffer){
     int procsNum = 0;
     char** commands;
@@ -205,6 +206,7 @@ void execPipedCommand(char* buffer){
     }
 }
 
+/* Loads and executes a simple shell command */
 void execSimple(char** buffer){
     int stat_loc;
     pid_t child_pid;
@@ -219,7 +221,6 @@ void execSimple(char** buffer){
         }
         printf("This won't be printed if execvp is successful\n");
     }
-    // Error forking
     else if (child_pid < 0){
         perror("Fork failed\n");
         exit(1);
