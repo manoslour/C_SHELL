@@ -14,8 +14,10 @@ int main(int argc, char *argv[]){
 
         printPrompt();
         input = readLine();
-
-        if(strstr(input, "|||")){
+        if(strstr(input, ">")){
+            execPipedCommand(input);
+        }
+        else if(strstr(input, "|||")){
             command = tokenizeLine(input, "|||");
             execRedirection(command, APPEND);
         }
@@ -50,8 +52,8 @@ int main(int argc, char *argv[]){
             }
         }
         
-        free(input);
-        free(command);
+        //free(input);
+        //free(command);
     }
     return 0;
 }
