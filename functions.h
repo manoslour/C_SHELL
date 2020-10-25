@@ -12,6 +12,7 @@
 #include <string.h>
 #include <limits.h>
 #include <stdlib.h>
+#include <termios.h>
 #include <sys/wait.h>
 
 #define RL_BUFSIZE 1024
@@ -19,6 +20,21 @@
 #define INPUT 0
 #define OUTPUT 1
 #define APPEND 2
+
+/* Colored print output */
+void cyan(){
+  printf("\033[1;36m");
+}
+
+/* Colored print output */
+void yellow(){
+  printf("\033[1;33m");
+}
+
+/* Colored print output */
+void reset(){
+  printf("\033[0m");
+}
 
 /* Prints shell prompt */
 void printPrompt();
