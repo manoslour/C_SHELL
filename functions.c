@@ -5,22 +5,39 @@
 
 #include "functions.h"
 
+void cyan(){
+  printf("\033[1;36m");
+}
+
+void yellow(){
+  printf("\033[1;33m");
+}
+
+void reset(){
+  printf("\033[0m");
+}
+
 /* Prints shell prompt */
 void printPrompt(){
-    char* name;
+    char name[] = "cs345sh@";
     char cwd[PATH_MAX];
 
     struct passwd *pass = getpwuid(getuid());
-    name = pass->pw_name;
-    strcat(name, "@cs345sh");
+    strcat(name, pass->pw_name);
+    strcat(name, ":");
+    yellow();
+    printf("%s", name);
 
-    if(getcwd(cwd, sizeof(cwd)) != NULL)
-        strcat(name, cwd);
+    if(getcwd(cwd, sizeof(cwd)) != NULL){
+        cyan();
+        printf("%s", cwd);
+    }
+
     else
         perror("getcwd() error");
 
-    strcat(name, "/$ ");
-    printf("%s", name);
+    reset();
+    printf("~$ ");
 }
 
 /* Reads line from stdin */
@@ -184,11 +201,13 @@ void execPipedCommand(char* buffer){
         }
         pid = fork();
         if(pid == 0){
+            // Every process writes to pipe except the last one
             if(i != procsNum - 1){
                 dup2(fd[i][1], 1);
                 close(fd[i][0]);
                 close(fd[i][1]);
             }
+            // Every process reads from pipe except the first one
             if( i != 0){
                 dup2(fd[i-1][0], 0);
                 close(fd[i-1][0]);
@@ -198,10 +217,12 @@ void execPipedCommand(char* buffer){
             perror("Invalid input");
             exit(1);
         }
+        // Parent process
         else{
             close(fd[i-1][0]);
             close(fd[i-1][1]);
         }
+        // Child process waits input from sibling process
         wait(NULL);
     }
 }
