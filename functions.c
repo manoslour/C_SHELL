@@ -108,7 +108,10 @@ char** tokenizeLine(char* input, char* c){
 }
 
 /* Terminates shell */
-int exitShell(){
+int exitShell(char* input, char** command){
+    free(input);
+    if(command != NULL)
+        free(command);
     return 0;
 }
 

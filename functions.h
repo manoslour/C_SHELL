@@ -37,7 +37,7 @@ void printPrompt();
 char* readLine();
 
 /* Terminates shell */
-int exitShell();
+int exitShell(char* input, char** command);
 
 /* Split line into tokens */
 char** tokenizeLine(char* input, char* c);
