@@ -45,15 +45,12 @@ int main(int argc, char *argv[]){
                 }
             }
             else if(strcmp(command[0], "exit") == 0){
-                return exitShell();
+                return exitShell(input, command);
             }
             else{
                 execSimple(command);
             }
         }
-        
-        //free(input);
-        //free(command);
     }
     return 0;
 }
