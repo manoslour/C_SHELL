@@ -22,19 +22,13 @@
 #define APPEND 2
 
 /* Colored print output */
-void cyan(){
-  printf("\033[1;36m");
-}
+void cyan();
 
 /* Colored print output */
-void yellow(){
-  printf("\033[1;33m");
-}
+void yellow();
 
 /* Colored print output */
-void reset(){
-  printf("\033[0m");
-}
+void reset();
 
 /* Prints shell prompt */
 void printPrompt();
