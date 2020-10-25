@@ -12,8 +12,8 @@ A simple shell implementation.
 
 ### Shell.c
 
-Shell reads input by line, and calls the appropriate function,  
-based on the delimeter commands are separated with. If no delimeter is used, a function for basic shell commands is called.
+Shell reads input by line, and calls the appropriate function, based on the delimeter commands are separated with.  
+If no delimeter is used, a function for basic shell commands is called.
 
 * INPUT(0), OUTPUT(1), APPEND(2) are defined in functions.h
 
