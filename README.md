@@ -6,5 +6,5 @@ A simple shell implementation.
 - [x] Complex Commands
 - [x] Built-in Commands
 - [x] Redirection
-- [ ] Pipes
+- [x] Pipes
 - [ ] Shortcuts
